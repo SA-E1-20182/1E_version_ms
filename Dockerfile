@@ -11,8 +11,9 @@ WORKDIR /app
 
 # Install hex package manager
 RUN mix local.hex --force
-
+RUN mix deps.get
 # Compile the project
 RUN mix do compile
 RUN chmod +x entrypoint.sh
+
 CMD "./entrypoint.sh"
