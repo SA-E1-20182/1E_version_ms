@@ -11,9 +11,11 @@ WORKDIR /app
 
 # Install hex package manager
 RUN mix local.hex --force
-RUN mix deps.get
-# Compile the project
-RUN mix do compile
-RUN chmod +x entrypoint.sh
 
+# Compile the project
+#RUN apt-get install build-essential rebar -y
+RUN mix local.rebar
+RUN mix deps.get
+RUN mix deps.compile
+RUN chmod +x entrypoint.sh
 CMD "./entrypoint.sh"

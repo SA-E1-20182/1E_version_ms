@@ -106,8 +106,6 @@ definitions:
     properties:
       URL:
         type: string
-      ID:
-        type: integer
         
   ProjectList:
     type: object
