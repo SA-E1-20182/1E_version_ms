@@ -1,11 +1,13 @@
 while ! pg_isready -q -h $PGHOST -p $PGPORT -U $PGUSER
 do
   echo "$(date) - waiting for database to start"
-  sleep 2
+  sleep 5
 done
 
 # Create, migrate, and seed database if it doesn't exist.
 
+mix ecto.create
+mix ecto.migrate
 
 if [[ -z `psql -Atqc "\\list $PGDATABASE"` ]]; then
   echo "Database $PGDATABASE does not exist. Creating..."
@@ -16,6 +18,4 @@ if [[ -z `psql -Atqc "\\list $PGDATABASE"` ]]; then
   echo "Database $PGDATABASE created."
 fi
 
-mix ecto.create
-mix ecto.migrate
 exec mix phoenix.server
