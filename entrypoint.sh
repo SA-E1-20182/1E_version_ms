@@ -14,7 +14,6 @@ if [[ -z `psql -Atqc "\\list $PGDATABASE"` ]]; then
   createdb -E UTF8 $PGDATABASE -l en_US.UTF-8 -T versioning
   mix ecto.create
   mix ecto.migrate
-  mix run priv/repo/seeds.exs
   echo "Database $PGDATABASE created."
 fi
 
