@@ -18,4 +18,7 @@ RUN mix local.rebar
 RUN mix deps.get
 RUN mix deps.compile
 RUN chmod +x entrypoint.sh
+
+EXPOSE 4000
+
 CMD "./entrypoint.sh"
