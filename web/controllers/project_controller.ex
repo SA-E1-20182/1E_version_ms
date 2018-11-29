@@ -9,11 +9,11 @@ defmodule Versioning.ProjectController do
     render(conn, "index.json", projects: projects)
   end
 
-  def create(conn, %{"project" => project_params}) do
+  def create(conn, project_params) do
     changeset = Project.changeset(%Project{}, project_params)
     case Repo.insert(changeset) do
       {:ok, project} ->
-        Enum.each(project_params["pages"], fn (x) -> 
+        Enum.each(project_params["pages"], fn (x) ->
           Repo.insert(%Versioning.Image{project_id: project.id, image_url: x}) end)
         #text conn, "Showing id #{project.id}"
         conn
