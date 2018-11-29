@@ -6,7 +6,11 @@ defmodule Versioning.ProjectView do
   end
 
   def render("show.json", %{project: project}) do
-    render_one(project, Versioning.ProjectView, "project.json")
+    %{version_id: project.id,
+      user_id: project.user_id,
+      project_id: project.project_id,
+      inserted_at: project.inserted_at
+    }
   end
 
   def render("project.json", %{project: project}) do
