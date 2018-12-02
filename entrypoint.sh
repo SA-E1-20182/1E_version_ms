@@ -16,5 +16,6 @@ if [[ -z `psql -Atqc "\\list $PGDATABASE"` ]]; then
   mix ecto.migrate
   echo "Database $PGDATABASE created."
 fi
+EXPOSE 4000
 
 exec mix phoenix.server
