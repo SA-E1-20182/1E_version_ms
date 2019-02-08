@@ -24,7 +24,7 @@ services:
       - versioning_db
   versioning_db:
     # We use the predefined Postgres image
-    image: postgres:10
+    image: postgres:9.4
     command: -p 5433
     environment:
       # Set user/password for Postgres
