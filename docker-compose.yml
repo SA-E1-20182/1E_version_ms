@@ -13,7 +13,7 @@ services:
       PGUSER: postgres
       PGPASSWORD: postgres
       PGDATABASE: versioning
-      PGPORT: 5433
+      PGPORT: 5432
       # Hostname of our Postgres container
       PGHOST: versioning_db
     ports:
@@ -25,7 +25,7 @@ services:
   versioning_db:
     # We use the predefined Postgres image
     image: postgres:9.4
-    command: -p 5433
+    command: -p 5432
     environment:
       # Set user/password for Postgres
       POSTGRES_USER: postgres

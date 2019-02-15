@@ -28,5 +28,5 @@ config :versioning, Versioning.Repo,
   password: "postgres",
   database: "versioning_dev",
   hostname: "versioning-db",
-  port: 5433,
+  port: 5432,
   pool_size: 10
